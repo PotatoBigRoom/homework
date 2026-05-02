@@ -153,16 +153,21 @@ function renderResults(payload) {
     .join("");
 }
 
-fetch("results/model_results.json", { cache: "no-store" })
+const resultController = new AbortController();
+const resultTimer = window.setTimeout(() => resultController.abort(), 3500);
+
+fetch("results/model_results.json", { cache: "no-store", signal: resultController.signal })
   .then((response) => {
     if (!response.ok) {
       throw new Error("result file not found");
     }
     return response.json();
   })
-  .then(renderResults)
+  .then((payload) => {
+    window.clearTimeout(resultTimer);
+    renderResults(payload);
+  })
   .catch(() => {
-    statusEl.textContent = "还没有找到 results/model_results.json，请先运行 models/run_pipeline.py。";
-    metaEl.innerHTML = "";
-    gridEl.innerHTML = "";
+    window.clearTimeout(resultTimer);
+    statusEl.textContent = "已展示 HTML 内置 baseline 结果；JSON 动态更新暂不可用。";
   });
