@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>材料机器学习模型开发主页</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#overview" aria-label="返回主页">
+        <span class="brand-mark">ML</span>
+        <span>Materials Intelligence</span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="#models">模型</a>
+        <a href="#workflow">流程</a>
+        <a href="#results">结果</a>
+        <a href="#roadmap">计划</a>
+        <a href="#deliverables">成果</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="overview">
+        <canvas id="latticeCanvas" aria-label="晶体图网络动态背景"></canvas>
+        <div class="hero-content">
+          <p class="eyebrow">材料科学机器学习开发计划</p>
+          <h1>无机晶体、电池材料、催化表面与高熵合金的智能筛选主页</h1>
+          <p class="hero-copy">
+            围绕形成能、电压容量、吸附能和相稳定性四类核心预测任务，构建从数据处理、特征构造、模型训练到材料候选推荐的完整工作流。
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#models">查看四个模型方向</a>
+            <a class="secondary-action" href="#roadmap">查看开发路线</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-band" aria-label="项目指标">
+        <div>
+          <strong>4</strong>
+          <span>模型子项目</span>
+        </div>
+        <div>
+          <strong>9+</strong>
+          <span>关键技术模块</span>
+        </div>
+        <div>
+          <strong>3</strong>
+          <span>材料应用场景</span>
+        </div>
+        <div>
+          <strong>End-to-End</strong>
+          <span>数据到候选推荐</span>
+        </div>
+      </section>
+
+      <section class="section" id="models">
+        <div class="section-heading">
+          <p class="eyebrow">Machine Learning Models</p>
+          <h2>四项模型开发任务</h2>
+        </div>
+
+        <div class="model-grid">
+          <article class="model-card">
+            <div class="model-index">1.1</div>
+            <h3>晶体稳定性快速预测模型</h3>
+            <p>使用晶体图卷积神经网络预测无机晶体形成能与热力学稳定性，支撑大规模结构筛选。</p>
+            <dl>
+              <div><dt>关键词</dt><dd>形成能预测、图神经网络、CGCNN</dd></div>
+              <div><dt>技术栈</dt><dd>PyTorch、DGL、Pymatgen</dd></div>
+              <div><dt>输出</dt><dd>形成能、稳定性排序、结构嵌入表示</dd></div>
+            </dl>
+          </article>
+
+          <article class="model-card">
+            <div class="model-index">1.2</div>
+            <h3>锂离子电池正极材料筛选工具</h3>
+            <p>基于 Materials Project 数据构建电压、容量、稳定性多目标预测模型，筛选高潜力正极材料。</p>
+            <dl>
+              <div><dt>关键词</dt><dd>电压预测、多目标优化、电池材料</dd></div>
+              <div><dt>技术栈</dt><dd>Scikit-learn、多目标优化、Pymatgen</dd></div>
+              <div><dt>输出</dt><dd>Pareto 候选、综合评分、筛选报告</dd></div>
+            </dl>
+          </article>
+
+          <article class="model-card">
+            <div class="model-index">1.3</div>
+            <h3>催化活性位点智能识别系统</h3>
+            <p>面向催化剂表面吸附能预测，结合 ASE 构造表面与吸附构型，识别潜在高活性位点。</p>
+            <dl>
+              <div><dt>关键词</dt><dd>吸附能预测、表面科学、神经网络</dd></div>
+              <div><dt>技术栈</dt><dd>ASE、Scikit-learn、特征工程</dd></div>
+              <div><dt>输出</dt><dd>位点评分、吸附能预测、表面热图</dd></div>
+            </dl>
+          </article>
+
+          <article class="model-card">
+            <div class="model-index">1.4</div>
+            <h3>高熵合金相稳定性预测</h3>
+            <p>基于成分特征和集成学习预测高熵合金相形成规律，辅助新型合金成分设计。</p>
+            <dl>
+              <div><dt>关键词</dt><dd>高熵合金、相图计算、集成学习</dd></div>
+              <div><dt>技术栈</dt><dd>Random Forest、特征重要性、相图</dd></div>
+              <div><dt>输出</dt><dd>相类别、特征贡献、候选合金配方</dd></div>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <section class="workflow" id="workflow">
+        <div class="section-heading">
+          <p class="eyebrow">Pipeline</p>
+          <h2>统一研发流程</h2>
+        </div>
+        <div class="pipeline">
+          <div><span>01</span><strong>数据获取</strong><p>Materials Project、实验数据、DFT 计算结果与结构文件。</p></div>
+          <div><span>02</span><strong>结构解析</strong><p>使用 Pymatgen 与 ASE 清洗晶体、表面、成分和目标属性。</p></div>
+          <div><span>03</span><strong>特征构建</strong><p>晶体图、组成描述符、位点环境、热力学与相图特征。</p></div>
+          <div><span>04</span><strong>模型训练</strong><p>CGCNN、随机森林、神经网络与多目标优化模型。</p></div>
+          <div><span>05</span><strong>候选推荐</strong><p>输出稳定性、性能分数、可解释性结果和候选材料清单。</p></div>
+        </div>
+      </section>
+
+      <section class="results-section" id="results">
+        <div class="section-heading">
+          <p class="eyebrow">Model Outputs</p>
+          <h2>代码运行结果</h2>
+          <p class="result-note" id="resultStatus">正在读取模型运行结果...</p>
+        </div>
+        <div class="result-meta" id="resultMeta"></div>
+        <div class="result-grid" id="resultGrid"></div>
+      </section>
+
+      <section class="section split" id="roadmap">
+        <div class="section-heading">
+          <p class="eyebrow">Roadmap</p>
+          <h2>阶段计划</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span>第 1 阶段</span>
+            <h3>数据与基线模型</h3>
+            <p>完成数据 schema、清洗脚本、特征缓存和每个任务的 baseline 模型。</p>
+          </div>
+          <div class="timeline-item">
+            <span>第 2 阶段</span>
+            <h3>模型增强与评估</h3>
+            <p>引入 CGCNN、多目标优化、表面位点特征和高熵合金集成学习。</p>
+          </div>
+          <div class="timeline-item">
+            <span>第 3 阶段</span>
+            <h3>可解释性与推荐</h3>
+            <p>加入特征重要性、误差分析、候选排序和可视化仪表盘。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="deliverables" id="deliverables">
+        <div class="section-heading">
+          <p class="eyebrow">Deliverables</p>
+          <h2>最终成果</h2>
+        </div>
+        <div class="deliverable-list">
+          <div><strong>模型代码</strong><span>四个任务的训练、验证、预测和评估脚本。</span></div>
+          <div><strong>数据接口</strong><span>Materials Project、结构文件、表面构型与合金成分数据入口。</span></div>
+          <div><strong>预测服务</strong><span>输入材料结构或成分，输出性能预测、排序和解释结果。</span></div>
+          <div><strong>主页展示</strong><span>项目介绍、方法路线、技术栈和候选材料结果展示。</span></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Materials Intelligence Homepage</span>
+      <span>CGCNN · Pymatgen · ASE · Scikit-learn · Random Forest</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
